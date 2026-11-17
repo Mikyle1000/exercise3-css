@@ -1,0 +1,301 @@
+/* Universal reset & box sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Loading Spinner Animation */
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeOut 0.5s ease 1s forwards;
+  pointer-events: none;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #4CAF50;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Animated Navigation Menu */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2c3e50;
+  padding: 15px 40px;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  animation: slideDown 0.8s ease-out;
+}
+
+.nav-brand {
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+
+.nav-link:hover {
+  color: #4CAF50;
+  transform: translateY(-2px);
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Hero Section with Animated Background */
+.container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background-image: url('hero_section_image.jpg');
+  background-size: 150% 150%;
+  animation: gradientShift 10s ease infinite;
+  max-width: 1200px;
+  margin: 20px auto;
+  overflow: hidden;
+  padding: 0 16px 32px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero_section {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.title {
+  font-size: 56px;
+  margin-bottom: 10px;
+  animation: fadeInScale 1s ease-out;
+}
+
+.description {
+  font-size: 22px;
+  opacity: 0.9;
+  animation: fadeIn 1.2s ease-out;
+}
+
+/* Skew transform for decorative elements */
+.decorative-badge {
+  margin-top: 15px;
+  display: inline-block;
+  background-color: #4CAF50;
+  color: white;
+  padding: 6px 16px;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.decorative-badge:hover {
+  transform: skew(0deg) scale(1.05);
+  background-color: #3e8e41;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Product Grid & Cards */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 300px));
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.product-card {
+  display: flex;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  padding: 20px;
+  background-color: white;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideInUp 0.8s ease forwards;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+}
+
+/* Staggered animation delays for sequence effects */
+.card-1 { animation-delay: 0.2s; }
+.card-2 { animation-delay: 0.4s; }
+.card-3 { animation-delay: 0.6s; }
+.card-4 { animation-delay: 0.8s; }
+.card-5 { animation-delay: 1.0s; }
+.card-6 { animation-delay: 1.2s; }
+
+@keyframes slideInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover animations for cards (Transforms & Transitions) */
+.product-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.img-wrapper {
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.card-img {
+  width: 100%;
+  height: 180px;
+  border-radius: 6px;
+  object-fit: cover;
+  transition: transform 0.5s ease, filter 0.3s ease;
+  transform-origin: center;
+}
+
+.product-card:hover .card-img {
+  transform: scale(1.08) rotate(1deg);
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.product-card:hover .card-title {
+  color: #4CAF50;
+}
+
+.card-price {
+  font-size: 16px;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+/* Pulse Animation for CTA Buttons with animation-play-state control */
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  animation: pulseButton 2s infinite;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+@keyframes pulseButton {
+  0% {
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+  }
+}
+
+.btn:hover {
+  background-color: #3e8e41;
+  animation-play-state: paused; /* Pauses pulse animation on hover */
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
